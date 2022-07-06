@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../first/static/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>first</title>
+</head>
+<body>
+    <div style="display:none;">
+        <div>
+            <span>密码:</span> <input type='password' placeholder="" value="nowcoder"/>
+            <input type='checkbox' placeholder="" checked="true"/>
+            <table  style="border-collapse: collapse;width:150px ;">
+                <caption >nowcoder</caption>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <img title="" src="../first/static/test1.png" alt=""  style="width:100px ;height:100px"/> <!--title 标题属性 alt 代替文本 -->
+            <a href="index2.html">to html2</a>
+            <ul title="nowcoder">
+                <li>nowcoder</li>
+                <li style="background-color: rgb(255,0,0);">nowcoder</li>
+                <li>nowcoder</li>
+                <li style="background-color: rgb(255,0,0);">nowcoder</li>
+            </ul>
+            <span style="color: rgb(255,0,0);">红色</span>
+            <span style="color: rgb(0,128,0);">绿色</span>
+            <span style="color: rgb(0,0,0);">黑色</span>
+        </div>
+        <div style="border-radius: 100px;width:100px;height: 100px;background-color: aqua;"></div>
+        <input id="input"/>
+        <span id="span"></span>
+    </div>
+    <div id="app">
+       {{name}}
+    </div>
+</body>
+<script src="../first/index.js"></script>
+</html>
