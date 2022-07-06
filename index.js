@@ -36,7 +36,7 @@
 let app = new Vue({
     el: '#app',
     data:{
-          name:'123'  
+          name:'456'  
     },
     mounted(){
 
