@@ -16,3 +16,6 @@
 9、使用git commit -m ‘新添加的文件内容描述’ //添加文件描述
 
 10、使用git push origin master ，将本地仓库推送到远程仓库
+
+
+ git config --global http.sslVerify false
