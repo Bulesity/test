@@ -18,3 +18,11 @@ for(let i = 0;i;i++){
     i = 0;//break  将条件设置为false
 }
 
+typeof(typeof(undefined)) //string
+
+
+//显示类型转换
+let str = '123';
+let num = Number(str);
+console.log(num);
+
