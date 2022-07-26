@@ -78,5 +78,7 @@
     window.Compute = Compute;
 }());
 
-var compute = new Compute('ad',3);
-compute.puls();
+// var compute = new Compute('ad',3);
+// compute.puls();
+
+
