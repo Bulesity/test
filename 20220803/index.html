@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>  
+    <div id="app"> 
+           
+        <h3>之前</h3>
+        <!--组件静态传值
+        <todo-list msgc="hello world!"></todo-list>-->
+        <!--组件动态传值
+        <todo-list :content="item" msgc="ssss"
+        v-for="item in list"
+        ></todo-list>-->
+        <!--<todo-item :content="item" :index="index"
+        v-for="(item,index) in list" 
+        @delect="handDelect"
+        ></todo-item>-->
+    </div>   
+    
+</body>
+<script  src="../static/vue.js"></script>
+<script  type="text/javascript">
+    //全局注册
+    // Vue.component('todo-list',{   
+    //     //...options...
+    //     props:['msgc','content'],
+    //     template:'<div>{{msgc}}<h3>{{content}}</h3></div>'
+    // })
+    //局部注册
+    let todoItem = { //声明
+        data:function(){  //子组件的data 是一个function 返回一个数据对象
+            return{
+                message:'这是子组件的Data'
+            }          
+        },
+        props:['content','index'],
+        template:'<li @click="handClick" >{{content}}</li>',
+        methods:{
+            handClick:function(){
+                console.log(this.index)
+                this.$emit('delect',this.index)  //向外触发delect事件 this.$meit(事件名称，参数)
+            }
+        }
+    }
+
+    var app = new Vue({    //1.初始化事件和生命周期相关内容 init Events and  lifestyle
+        el:"#app",
+        template:'<h3>{{msg}}</h3>',
+        beforeCreate:function(){ //2.beforeCreate生命周期函数 （Vue 实例在特定的时间点执行的函数）
+            console.log('sssssssssssssssss')
+            console.log(this.msg)
+        },
+        components:{//3.init injections and reactivity 初始化外部注入和数据双向绑定
+            'todo-item':todoItem  //组件注册
+        },
+        data:{
+            msg:'hello word',
+            list:[123,456,235,44]
+        },
+        created:function(){//4,created 生命周期函数
+            console.log(this.msg)
+        },//5 判断是否有el 没有->vue.$mount(el) is call 等待挂载 有的话 --> 判断template是否存在-->存在 编译该模板  -->不存在 编译el对应的outhtml
+        beforeMount:function(){
+            console.log(this.$el)
+            console.log('beforeMount')//5,beforeMount 生命周期函数
+        },                           //用模板里面的html替换原来挂载的html
+        mounted:function(){
+            console.log(this.$el)
+            console.log('mount')//6,mount 生命周期函数
+        },
+        methods:{
+            handDelect:function(index){
+               this.list.splice(index,1)
+            }
+        },
+        beforeDestroy:function(){ //7 当执行vue.$destory()后执行
+            console.log('beforeDestroy')
+        },
+        destroyed:function(){//8 当执行vue.$destory()后执行 解除双相绑定
+            console.log('destroyed')
+        }
+    })
+    app.$destroy()
+</script>
+
+</html>

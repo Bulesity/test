@@ -19,3 +19,6 @@
 
 
  git config --global http.sslVerify false
+
+
+ git reset --hard HEAD~1 回退上一个（1）git版本

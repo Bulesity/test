@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>  
+    <div id="app"> 
+        <child content="panpan">
+            <template slot-scope="props">
+                <h1>{{props.content}}</h1>
+            </template> <!--作用域插槽-->
+            <!--<h1>zuisha</h1>slot 插槽-->
+            <!--<h1 slot="header">header</h1> slot 具名 插槽
+            <h1 slot="body">body</h1>
+            <h1 slot="footer">footer</h1> -->         
+        </child>
+        <!-- <child content="hello"></child>
+        <child content="panpan"></child> -->
+    </div>       
+</body>
+<script  src="../static/vue.js"></script>
+<script  type="text/javascript">
+    Vue.component('child',{
+        props:['content'],
+        template:`<div><p>{{content}}</p>
+            <slot content="this is slot of scope"></slot></div>
+            `
+        // `<div><p>{{content}}</p>
+        //     <slot ></slot> 
+        //     <slot name="header"></slot>  
+        //     <slot name="body"></slot> 
+        //     <slot name="footer"></slot> 
+        //     </div>`
+    })
+    // Vue.prototype.bus = new Vue();  //在Vue的原型上定义一个bus,
+    // Vue.component('child',{ 
+    //     props:['content'],
+    //     template:'<div @click="divClick">{{content}}</div>',
+    //     methods:{
+    //         divClick:function(){
+    //             this.bus.$emit('change',this.content)
+    //         }
+    //     },
+    //     mounted:function(){
+    //         this.bus.$on('change',function(msg){  //监听change事件
+    //            console.log(msg)
+    //         })
+    //     }
+    // })
+    var app = new Vue({
+        el:'#app',
+        methods:{
+            handClick:function(msg){
+                console.log(msg)
+            }
+        }
+    })
+</script>
+    
+</html>

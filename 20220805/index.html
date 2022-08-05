@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>  
+    <div id="app"> 
+        <button-counter @change="handChange" ref="btn1"></button-counter>   
+        <button-counter @change="handChange" ref="btn2"></button-counter> 
+        <button-counter @change="handChange" ref="btn3"></button-counter> 
+        <h3>Total:{{total}}</h3>       
+    </div>       
+</body>
+<script  src="../static/vue.js"></script>
+<script  type="text/javascript">
+    Vue.component('button-counter',{
+        data:function(){
+            return{
+                count:0
+            }
+        },
+        template:'<button @click="buttonClick">{{count}}</button>',
+        methods:{
+            buttonClick:function(){           
+                this.count++;
+                this.$emit('change')
+               // console.log(this.count)
+            }
+        }
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            total:0
+        },
+        methods:{
+            handChange:function(value){
+               this.total = this.$refs.btn1.count + this.$refs.btn2.count + this.$refs.btn3.count
+            }
+        }
+    })
+</script>
+    
+</html>
